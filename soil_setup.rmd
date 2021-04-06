@@ -1,0 +1,90 @@
+---
+title: "Growth system with soil for microbiome study"
+author: "Ke Tao"
+date: "2021/4/3"
+output:
+  html_document:
+    theme: journal
+    toc: yes
+    toc_float: true
+    
+---
+## Preparation
+
+1. Sterile clean LECA & vermiculite (120 degree autoclave)
+2. Sterile pots (70% ethanol spray)
+3. Sterile 1 ml empty tip boxes, beaker, spoon, funnel, forceps, filter paper (120 degree autoclave)
+4. Sterile big white boxes
+5. Sterile water
+6. Seedlings
+7. 50 ml falcon tubes
+
+**Note**: the empty tip boxes may be out of shape, do not put them together too tight before autoclave.
+
+## Overview of the growth system
+
+**The overview of the growth system is shown in the following picture**: pots with substrate are put in 1 ml sterile tip box, plants are grow in the pots, number of plants/pot are depend on plant species, purpose and growth time.
+
+![Figure 1](C:/Users/Ke Tao/Desktop/microbiome_16S_workflow/image/overview.jpg)
+
+## Steps for set up in PM lab
+
+**Make sure the bench is clean and sterile by ethanol before set up**
+
+1. Set up the growth system as shown in the figure 1 (dirty plant room);
+2. Fill the pots with substrates (dirty plant room);
+3. Water the substrates from the top until it flow out in the 1 ml tip box (dirty plant room);
+4. Put the growth system into big white boxes and transfer into the institute building with growth chambers (**Note: remember book the growth chamber in lab wiki before experiment set up**)
+
+5. Together with the growth system, transferring seedlings, sterile water, forceps, clean plastic film to the institute;
+
+6. Put seedling into the pots by sterile forceps and be careful do not hurt the roots of seedlings;(institute)
+
+7. Water the pots at the bottom by pooring sterile water into the 1 ml tip boxes, make sure each tip box has water. 
+
+8. Cover the big white boxes by plastic film to avoid seedling dry out;
+   **7 days cover for Lotus**
+   **3 days cover for Barley**
+   **10 days cover for Arabidopsis**
+   
+9. Transferring the big white boxes with the ready-to-go pots and seedlings into growth chamber
+
+### Watering
+
+**The following up watering tips are**:
+a. Always watering at the bottom to avoid flush away microbiota from roots;
+b. Always keep the bottom tip boxes has water;
+c. The week before harvest can supply with less water for easier take the plants out from pots afterwards, the principle is to not let the soil dry while the bottom do not need much water.
+
+
+## Substrates and plant number/pot for 3 wpi plants
+
+**The substrates for 3 wpi plants are as follows**:50g LECA+80g soil+ Vermiculite at the top
+
+![Figure 2](C:/Users/Ke Tao/Desktop/microbiome_16S_workflow/image/substrate1.jpg)
+
+
+**Plant number per pot for 3 wpi**: 
+
+Arabidopsis: 20
+
+Lotus: 10
+
+Barley: 1 (Barley will be under pressure if grown in the pot more than 3-4 weeks)
+
+
+
+## Substrates and plant number/pot for 9 wpi plants
+
+**The substrates for 9 wpi plants are as follows**: a spoon of LECA+soil (160-200g)+Vermiculite at the top
+
+![Figure 3](C:/Users/Ke Tao/Desktop/microbiome_16S_workflow/image/substrate2.jpg)
+
+
+**Plant number per pot for 9 wpi**: 
+
+Lotus: 2
+
+
+
+**The set up is done! Good luck for the experiment!**
