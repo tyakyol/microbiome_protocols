@@ -1,0 +1,40 @@
+---
+title: "Soil experiment with Barley LysM-RLK for microbiome studies"
+author: "Zuzana Blahovska"
+date: "5/25/2021"
+output: html_document
+---
+
+## Preparation
+
+### Seeds
+-	Barley RLK mutants seeds were sterilized and geminated for 4 days
+
+4 plants per pot 
+4 biological replicates
+
+### Pots 
+-	Large size pots were autoclaved
+-	Large white boxes were autoclaved
+-	Purple 1 ml boxes were autoclaved
+
+### Substrate
+-	Askov soil: 1NPK- non autoclaved
+
+### Media
+-	Sterilized water
+
+### Inoculation
+-	The soil is the inoculum
+
+## Overview of the growth set up
+-	Fill the large pots with soil
+
+## Planting plants into the pots
+Following steps are performed usually in the institute. To avoid disturbing the plants.
+
+-	Before planting plants into pots, water the pots with the sterilized water until you can see liquid coming of the pots. 
+-	After planting, you might need to add more water to the pots. From this step always, water from the bottom. 
+-	Cover the pots by plastic (autoclave bags) for 3 days. Barley grows fast and use a lot of media but do not over water the pots.
+
+The harvest was performed after 28 days from planting the plants. Harvested compartments are rhizosphere (RZ), endosphere-rhizoplane(ES)- water wash and bulk soil (BS)

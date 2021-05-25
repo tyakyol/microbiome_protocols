@@ -1,0 +1,6 @@
+﻿"# If you have the root weight, you just normalized based on root weight.",,,,,,,,,
+sample,original DNA conc,dilution times,spike reads,microbiome reads,spike loading,microbiome loading,microbiome loading in total samples,root weight(g),microbiome genes per gram of root
+Sample1,13.17,3.76,19079,3112,1.00E+05,1.63E+04,6.14E+04,0.0441,1.39E+06
+Sample2,7.57,2.16,11807,2045,1.00E+05,1.73E+04,3.75E+04,0.0526,7.12E+05
+Sample3,6.55,1.87,10419,6157,1.00E+05,5.91E+04,1.11E+05,0.0335,3.30E+06
+Sample4,5.35,1.53,14112,3022,1.00E+05,2.14E+04,3.27E+04,0.1814,1.80E+05

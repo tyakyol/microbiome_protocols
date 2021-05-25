@@ -1,0 +1,54 @@
+---
+title: "Evolution experiment of Barley/Maize with rhizobia pool"
+author: "Zuzana Blahovska"
+date: "5/25/2021"
+output: html_document
+---
+
+## Preparation
+
+### Seeds
+-	Barley seeds WT were sterilized and geminated for 4 days
+-	Maize seeds WT were sterilized and geminated for 5-6 days
+
+4 plants per pot 
+5 biological replicates
+
+### Pots
+-	Large size pots were autoclaved
+-	Large white boxes were autoclaved
+-	Purple 1 ml boxes were autoclaved
+
+### Substrate
+-	Large leca were autoclaved
+-	Vermiculate was autoclaved
+
+### Media
+-	Sterilized water
+-	Long Ashton: 1N1P media
+
+### Inoculation
+-	Re-grow Rhizobia pool from glycerol stocks according our common manual. 
+-	Wash the strains by centrifuging the plates down at max speed for 5 min and resuspend them in 1N1P media. Repeat this twice.
+
+Measure the OD by Varioskan and pool the strains to a similar ratio of strains. Measure OD and dilute this mixture to OD600=0.02
+
+## Overview of the growth set up
+-	Fill the pots with large leca. 
+-	On top of the pots add generous amount of vermiculate. Place these pots in purple box and white box.
+
+## Planting plants into the pots
+Following steps are performed usually in the institute. To avoid disturbing the plants.
+
+-	Before planting plants into pots, water either with sterilized water or with media the pots until you can see liquid coming of the pots. 
+-	After planting you might need to add more water to the pots. From this step on, always water from the bottom. 
+-	Cover the pots by plastic (autoclave bags) for 3 days. Barley and maize grow fast and use a lot of media, but do not over water the pots.
+
+## Inoculation
+After 7 days from planting plant into pots. 
+
+-	Add 20 ml of inoculum of OD600=0.02 per pot
+
+The harvest was performed after 28 days from inoculation. Harvested compartments are rhizosphere (RZ), endosphere-rhizoplane(ES)- water wash and bulk soil (BS)
+
+During harvest we harvested RZ, ES, and BS into proper tubes for 16S library but remaining RZ and ES fraction per sample were pooled together and crushed in Precelys 15 mL tubes and this fraction were used to re-inoculate month 2 of this experiment.

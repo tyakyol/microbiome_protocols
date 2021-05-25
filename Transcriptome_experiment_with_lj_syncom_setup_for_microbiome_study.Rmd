@@ -1,0 +1,66 @@
+---
+title: "Transcriptome experiment with Lj Syncom set up for microbiome study"
+author: "Zuzana Blahovska"
+date: "5/25/2021"
+output: html_document
+---
+
+## Preparation
+
+### Seeds
+- Lotus-gifu and lotus-symrk-3 seeds were sterilized and geminated for 3 days
+
+10 plants per pot 
+4 biological replicates
+
+### Pots
+-	Small mesh pots were sterilized by ethanol and UV for 15 min
+-	Medium size pots were sterilized by ethanol and UV for 15 min
+-	Large white boxes were autoclaved
+-	Purple 1 ml boxes were autoclaved
+
+### Substrate
+-	Large leca and small leca were autoclaved
+-	Vermiculate was autoclaved
+-	Autoclaved soil
+-	Non-autoclaved soil
+
+### Media
+-	Sterilized water
+-	Long Ashton: 1N1P media
+
+### Inoculation
+-	Re-grow full LjSyncom from glycerol stocks according to their growth time. 
+-	Wash the strains by centrifuging the plates down at max speed for 5 min and resuspend them in 1N1P media. Repeat this twice.
+-	Re-grow only Lj symbiont from glycerol stocks according to its growth time
+
+Measure the OD by Varioskan and pool the strains to a similar ratio of strains. Measure OD and dilute this mixture to OD600=0.02
+
+Soil was in this experiment the inoculum as well.
+
+## First overview of the growth set up
+-	Into small mesh, pots add small leca and vermiculate on the top – this will be set up for 14 days.
+
+## Planting plants into the pots
+Following steps are performed usually in the institute. To avoid disturbing the plants.
+
+-	Before planting plants into pots, water either with sterilized water or with media the pots until you can see liquid coming of the pots. 
+-	Cover the pots by plastic (autoclave bags) for 3-7 days. At this point watering will not be very much necessary but check on the plants every other day.
+
+## Second overview of the growth set up
+These pots will be needed on the day of inoculation (14 days post planting plants)
+
+-	On the bottom of the medium size pots add handful of the large leca. 
+-	On top of the leca add soil (inoculated or non-inoculated) but not to the very top!
+-	Take the small mesh pots and place them on top of the middle size pots- Push a little without disturbing the plants. 
+
+## Inoculation
+After 14 days from planting plants into the small, mesh pots. 
+
+-	Add 20 ml of inoculum of OD600=0.02 per pot, either full Lj Syncom or only Lj symbiont
+-	Add 1 mL of AM spores (500 spores)
+
+Grow these plants for 28 days.
+Harvested compartments are rhizosphere (RZ), endosphere-rhizoplane(ES)- water wash and nodules (NOD)
+
+This whole experiment was performed twice. One set was for 16S Microbiome library and second set was for RNA extraction and sequencing.

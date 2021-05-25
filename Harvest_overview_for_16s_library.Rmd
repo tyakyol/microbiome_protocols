@@ -1,0 +1,22 @@
+---
+title: "Harvest overview for 16S library"
+author: "Zuzana Blahovska"
+date: "5/25/2021"
+output: html_document
+---
+
+Harvest is usually performed in Tobacco room/Dirty plant room/ Plant room 3
+
+-	Remove plants from the pots and gently remove large pieces of leca/soil
+-	Take a photo of plants to show overall status of shoot and root
+-	Cut off shoots (keep in square plate with wet filter paper for weighing)- You can store them in cold room for next day.
+-	Combine roots from each pot in 50 mL Falcon tubes containing 35 mL sterile H2O
+-	Shake vigorously by hand for 30sec-Transfer washed roots to a new falcon tube containing sterile H2O
+-	Centrifuge the initial Falcon tubes at 4000g for 15min
+-	Remove almost all supernatant, resuspend the pellet in remaining ~5 mL H2O 
+-	Transfer 300 uL to lysing matrix tubes (Rhizospere fraction)		
+-	Wash the roots 5x with sterile H2O-Each time, shake for 30 sec		
+-	Separate out washed roots in sterile square plates	
+-	Cut 4 cm piece of root (excluding the top 1 cm)			
+-	Count and remove any nodules and put in tubes (Nodule fraction)			
+-	Dry-pat roots with sterile filter paper and put into tubes (Endosphere + Rhizoplane fraction)	

@@ -1,0 +1,6 @@
+﻿"#If you do not have the root weight, you can use the qPCR to determine the ratio between the Plant and 16s DNA, then followed the calculation below to estimate the microbial amount of each sample. Here is an example",,,,,,,,,,,,,
+sample,NFR5 initial copy numbers,16s initial copy numbers,ratio 16s/nfr5,original DNA conc,dilution times,spike reads,microbiome reads,spike loading,microbiome loading,microbiome loading in total samples,Plant cells (1 NFR5 copy/cell) ,"g of sample(bacteria has no weight here), we assume that 1g root is 50000 cells",microbiome genes
+Sample1,1.94E-07,7.83E-07,4.02,13.17,3.76,19079,3112,1.00E+05,1.63E+04,6.14E+04,1.53E+04,3.05E-01,2.01E+05
+Sample2,3.40E-07,6.36E-07,1.87,7.57,2.16,11807,2045,1.00E+05,1.73E+04,3.75E+04,2.00E+04,4.01E-01,9.35E+04
+Sample3,4.60E-07,2.83E-06,6.17,6.55,1.87,10419,6157,1.00E+05,5.91E+04,1.11E+05,1.79E+04,3.59E-01,3.08E+05
+Sample4,3.09E-07,1.25E-06,4.04,5.35,1.53,14112,3022,1.00E+05,2.14E+04,3.27E+04,8.10E+03,1.62E-01,2.02E+05

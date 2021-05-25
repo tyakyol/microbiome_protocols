@@ -1,0 +1,61 @@
+---
+title: "Time course experiment with Lj Syncom set up for microbiome study"
+author: "Zuzana Blahovska"
+date: "5/25/2021"
+output: html_document
+---
+
+## Preparation
+
+### Seeds
+-	Lotus-gifu seeds were sterilized and geminated for 3 days
+
+10 plants per pot (1-14 dpi)
+5 plants per pot (21-63 dpi)
+4 biological replicates
+
+Time points of harvest:
+1dpi, 2dpi, 3dpi, 5dpi, 7dpi, 10dpi, 14dpi, 21dpi, 28dpi, 35dpi, 42 dpi, 63 dpi
+
+### Pots
+-	Medium size pots were sterilized by ethanol and UV for 15 min
+-	Large white boxes were autoclaved
+-	Purple 1 ml boxes were autoclaved
+
+### Substrate 
+-	Large leca and small leca were autoclaved
+-	Vermiculate was autoclaved
+-	Sand was washed and baked for 8 hours at 180C
+
+### Media
+-	Sterilized water
+-	Long Ashton: 1N1P media
+
+### Inoculation
+-	Re-grow LjSyncom from glycerol stocks according to their growth time.
+-	Wash the strains by centrifuging the plates down at max speed for 5 min and resuspend them in 1N1P media. Repeat this twice.
+-	Measure the OD by Varioskan and pool the strains to a similar ratio of strains. Measure OD and dilute this mixture to OD600=0.02
+
+
+## Overview of the growth set up
+-	On the bottom of the pots add handful of the large leca. 
+-	In separate white box mix small leca and sand in 4:1 ratio and add 200-300 mL of sterilized water. Make sure that the leca is nicely covered with sand and add this mixture to the pots. 
+-	On top of the pots, add a generous amount of vermiculate. Place these pots in purple tip box (max 6 pots) and into the white box
+
+
+## Planting plants into the pots
+Following steps are performed usually in the institute. To avoid disturbing the plants too much.
+
+- Before planting plants into pots, water the pots either with sterilized water or with media until you can see liquid coming of the pots. 
+-	After planting, you might need to add more water to the pots. From this step always water from the bottom. 
+
+Cover the pots by plastic (autoclave bags) for 3-7 days. At this point watering will not be very much necessary but check on the plants every other day.
+
+## Inoculation
+After 14 days from planting plant into pots. 
+
+-	Add 20 ml of inoculum of OD600=0.02 per pot
+-	Add 1 mL of AM spores (500 spores)
+
+The harvest was performed in time points: 1-day post inoculation (dpi), until 63 dpi at different time points interesting for the experiment. 
+Harvested compartments are rhizosphere (RZ), endosphere-rhizoplane(ES)- water wash and nodules (NOD)

@@ -1,0 +1,108 @@
+---
+title: "Diversity analysis"
+author: "Turgut Yigit Akyol"
+date: "5/25/2021"
+output: html_document
+---
+
+## Load the packages
+
+```{r}
+suppressPackageStartupMessages(library(magrittr))
+suppressPackageStartupMessages(library(phyloseq))
+suppressPackageStartupMessages(library(vegan))
+suppressPackageStartupMessages(library(indicspecies))
+suppressPackageStartupMessages(library(scales))
+suppressPackageStartupMessages(library(pheatmap))
+suppressPackageStartupMessages(library(igraph))
+suppressPackageStartupMessages(library(Hmisc))
+```
+
+## Generating phyloseq object and rarefying
+
+```{r}
+phy = merge_phyloseq(
+  otu_table(otu, taxa_are_rows = TRUE),
+  sample_data(metadata)
+)
+phy_rar = rarefy_even_depth(phy, rngseed = 42, replace = FALSE)
+```
+
+
+## Alpha diversity
+
+```{r}
+richness = estimate_richness(phy_rar)
+```
+
+## Beta diversity
+
+### Principal coordinates analysis
+
+```{r}
+mds = ordinate(phy_rar, method = 'MDS', distance = 'bray')
+mds_df = plot_ordination(phy_rar, mds, 'samples',
+                         axes = 1:8, justDF = TRUE)
+var_ex = round(mds$values$Relative_eig[1:8] * 100, 2)
+```
+
+### PERMANOVA
+
+```{r}
+perm_res = adonis(t(phy_rar@otu_table) ~ 
+                    phy_rar@sam_data$factor1 * 
+                    phy_rar@sam_data$factor2 *
+                    phy_rar@sam_data$factor3, 
+                  permutations = 5000,
+                  method = 'bray')
+```
+
+## Indicator species analysis
+
+```{r}
+isa = function(p, f) {
+  p = as.data.frame(t(p@otu_table))
+  set.seed(42)
+  ind = multipatt(p,
+                  f,
+                  max.order = 1,
+                  control = how(nperm = 5000))
+  ind = ind$sign
+  ind$q.value = p.adjust(ind$p.value, method = 'BH')
+  ind = ind[ind$q.value <= 0.05,]
+  return(ind)
+}
+
+indics = isa(p = phy_rar, f = as.factor(f))
+```
+
+## Heatmap
+
+```{r}
+otu_ra = sapply(otu, function(x) x * 100 / sum(x)) %>% as.data.frame
+row.names(otu_ra) = row.names(otu)
+
+pheatmap(t(apply(otu_ra, 1, rescale)),
+         scale = 'none',
+         cluster_rows = TRUE, cluster_cols = FALSE
+         )
+```
+
+## Network analysis
+
+```{r}
+source('flattenCorrMatrix.R')
+
+network = function(df) {
+  corr_1 = rcorr(as.matrix(t(df)), type = 'spearman')
+  net_df_1 = flattenCorrMatrix(corr_1$r, corr_1$P)
+  colnames(net_df_1) = c('from', 'to', 'weight', 'p')
+  net_df_1$q = p.adjust(net_df_1$p, method = 'BH')
+  net_df_1_p = net_df_1[net_df_1$weight >= 0.6 & net_df_1$q <= 0.001, ]
+  net_df_1_p = net_df_1_p[ , 1:3]
+  net_g_1_p = graph_from_data_frame(d = net_df_1_p, directed = FALSE)
+  return(net_g_1_p)
+}
+  
+net = network(otu_ra)
+```

@@ -1,0 +1,32 @@
+---
+title: "OTU table filtering"
+author: "Turgut Yigit Akyol"
+date: "5/25/2021"
+output: html_document
+---
+
+```{r}
+suppressPackageStartupMessages(library(magrittr))
+suppressPackageStartupMessages(library(dplyr))
+
+filter_otus = function(otu, th, f) {
+  df = sapply(otu, function(x) x * 100 / sum(x))
+  df = df + 1
+  df = log2(df)
+  df = as.data.frame(df)
+  row.names(df) = row.names(otu)
+  sequences = c()
+  for(i in seq_len(nrow(df))) {
+    a = df[i, ]
+    a = as.data.frame(t(a))
+    a = cbind(a, f)
+    a$check = a[, 1] >= th
+    a = a %>% group_by(f) %>% summarise(mean = mean(check))
+    if(max(a$mean) == 1) {
+      sequences = c(sequences, row.names(df)[i])
+    }
+  }
+  return(sequences)
+}
+```
+
