@@ -1,0 +1,23 @@
+---
+title: "Differential abundance analysis"
+author: "Ib Thorsgaard Jensen"
+date: "26/5/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Filtering OTUs
+The OTU table should be filtered before differntial abundance analysis. When comparing two conditions, remove all other condition from the OTU table, then do the filtering, then do the differential abundance analysis. Filtering is done by picking some threshold and then include only the OTUs where the median relative abundance is above the threshold within at least one group. Alternatively, the OTUs can be filtered by including only the OTUs where the relative abundance is above the threshold in all samples within at least one group. See also the file "turgut_otu_table_filtering.Rmd".
+
+## Differences in composition
+DESeq and edgeR makes good use of small datasets, and perform well when identifying compositional differences in the microbiome. DESeq is generally more conservative and as result tend to exhibits slightly lower sensitivity, but also lower false discovery rate (FDR). EdgeR frequently exhibits slightly inflated FDR. The choice between the two comes down to whether the user is willing to accept the risk of slightly more false discoveries than expected (then use DESeq) or not (then use edgeR).
+
+## Differences in absolute abundance
+### With spike
+Assuming that the spike accurately estimates the absolute abundance, it is sufficient to compare the difference between condition with a two-sided $t$-test. It should be noted that most existing methods (e.g. edgeR, DESeq etc.) are constructed to look for compositional differences. For absolute abundance data, which is not compositional, this would cause a large number of false positives.
+
+### Without spike
+When using compositional data to test for absolute abundances, a bias term is present, due to the difference in microbial load between the conditions. For this reason, songbird yields only the ranks of the differences in absolute abundance, which is unaffected by the bias-term. Without further assumptions this all we can get. ANCOM-BC makes additional assumptions and attempts to estimate the bias-term. In my simulations studies these estimates often fail to accurately correct for the bias-term, and as a result a huge number of false positives is obtained. When the estimate does work well, it is possible to estimate differences in absolute abundance from compositional data, but I am currently not aware of any way to evaluate the accuracy of a bias-estimate on a given dataset, and as a result I do not recommend using ANCOM-BC at this time.
