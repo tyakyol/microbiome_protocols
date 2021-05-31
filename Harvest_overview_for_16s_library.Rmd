@@ -7,7 +7,7 @@ output: html_document
 
 Harvest is usually performed in Tobacco room/Dirty plant room/ Plant room 3
 
--	Remove plants from the pots and gently remove large pieces of leca/soil
+-	Remove plants from the pots and gently remove large pieces of leca/soil.
 -	Take a photo of plants to show overall status of shoot and root
 -	Cut off shoots (keep in square plate with wet filter paper for weighing)- You can store them in cold room for next day.
 -	Combine roots from each pot in 50 mL Falcon tubes containing 35 mL sterile H2O
