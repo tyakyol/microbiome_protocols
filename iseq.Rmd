@@ -1,0 +1,165 @@
+---
+title: <center> 16s library preparation using the iseq machine </center>
+output: html_document
+---
+## 1. DNA extraction followed the procedure on the lab wiki.
+## 2. Picogreen measurement after DNA extraction: 
+#### 
+<div> https://labbook.au.dk/download/attachments/134359528/picogreen_worksheet.xlsx?version=1&modificationDate=1611074984526&api=v2 </div>  
+
+Dilute the samples if possible to 3.5 ng/uL, if not use them undiluted.
+
+## 3. Library preparation:
+###     3.1. PCR1 for bacterial 16s:  
+| Components                                                                  | 1x(uL)    |
+|:----------------------------------------------------------------------------|:----------|
+|buffer (Taq complete, w MgCl2)                                               |  2.5      |
+|BSA (3%)                                                                     |  2.5      |  
+|dNTPs (20 mM)                                                                |  0.25     |
+|<font face="黑体" color=green size=3>799F_UMI(0.1uM,PM-14157) </font>        |   1       |  
+|<font face="黑体" color=green size=3>UMI_universal_F(10uM,PM-14160 </font>   |  1        |
+|<font face="黑体" color=green size=3>1192R_MAUI(10uM,PM-14161) </font>       |  1        |  
+|VWR-Taq polymerase                                                           |  0.4      |
+|H2O (use LC H2O)                                                             |13.35      |  
+|master mix volume                                                            | 22        |
+|DNA template                                                                 |  3        |
+|Total volume                                                                 |  25       |
+If adding spike to do the absolute quantification, just reduce the amount of water accordingly.
+
+####  PCR1 program:
+| Step   | Temperature | Time     | Cycle     |
+|:-------|:------------|:---------|:----------|
+|   1    |    95       |    180s  |           |
+|  <font color=red> 2 </font>   |   <font color=red> 95 </font>        |   <font color=red> 30s </font> |           | 
+|  <font color=red> 3 </font>   |   <font color=red> 55 </font>        |   <font color=red> 300s </font>| <font color=red> 2 cycles </font>|
+|  <font color=red> 4 </font>   |   <font color=red> 72 </font>        |   <font color=red> 120s </font>|           |
+|<font color=#008000> 5 </font> |<font color=#008000>95 </font>        |<font color=#008000>30s</font>  |           |
+|<font color=#008000> 6 </font> |<font color=#008000>55 </font>        |<font color=#008000>60s</font>  |<font color=#008000> 25 cycles </font>|
+| <font color=#008000> 7 </font> |<font color=#008000>72 </font> |<font color=#008000>60s</font>|           |
+|8    |    72       |    10min |           |
+|9    |    4        |    inf   |           |
+
+### 3.2. After PCR1, do Purification with AM beads:
+####
+1.  Leave AM pure beads on RT for an hour for easier handling.
+2.  Re-suspend AM pure beads by mixing/shaking throughly.
+3.  Into your PCR product, add 0.7 X volume of AM beads.
+4.  Mix it by pipetting 10x and leave it on RT for 5 min.
+5.  Place the tubes/plate on magnetic racks for 3 min to separate the beads from the solution.
+6.  Remove and discard the solution by pipetting.
+7.  Add 150 µL (if PCR plate) or 500 µL ( tube) of 70% ethanol and incubate for 1 min. 
+8.  Remove and discard the solution by pipetting.
+9.  Repeat the washing step.
+10. Dry the beads for 5 min RT – on magnetic rack. (do not overdry since this will decrease the elution efficiency).
+11. Remove plate/tubes from magnetic rack.
+12. Add 50 µL (or less if you want to concentrate) of nuclease-free water, mix it 10 times.
+13. Centrifuge (1 min-14000 g) and place the tubes in the magnetic rack.
+14. Transfer the eluent to fresh tube/plate.
+15. Clean template DNA are ready for PCR2.
+
+###   3.3. PCR2 for bacterial 16s:  
+| Components                                                                  | 1x(uL)    |
+|:----------------------------------------------------------------------------|:----------|
+|buffer (Taq complete, w MgCl2)                                               |  2.5      |
+|BSA (3%)                                                                     |  2.5      |  
+|dNTPs (20 mM)                                                                |  0.25     |
+|<font face="黑体" color=green size=3>NexteraN* </font>                       |   2.5     |  
+|<font face="黑体" color=green size=3>NexteraS* </font>                       |  2.5      |
+|VWR-Taq polymerase                                                           |  0.4      |
+|H2O (use LC H2O)                                                             |9.35      |  
+|master mix volume                                                            | 20       |
+|DNA template                                                                 |  5        |
+|Total volume                                                                 |  25       |
+
+#### PCR2 program:
+| Step   | Temperature | Time     | Cycle     |
+|:-------|:------------|:---------|:----------|
+|   1    |    95       |    2min  |           |
+|<font color=#008000> 2 </font> |<font color=#008000>95 </font>        |<font color=#008000>30s</font>  |           |
+|<font color=#008000> 3 </font> |<font color=#008000>55 </font>        |<font color=#008000>30s</font>  |<font color=#008000> 10 cycles </font>|
+| <font color=#008000> 4 </font> |<font color=#008000>72 </font> |<font color=#008000>60s</font>|           |
+|5    |    72       |    10min |           |
+|6    |    4        |    inf   |           |
+###   3.4. Run 1% Agarose gel:   
+After PCR2, run 5 µL of sample on 1% Agarose gel for 1 hour at 120V with 1Kb marker.  
+Examine your gel for correct bands and order.  
+
+### 3.5. PCR2 purification:  
+<table><tr><td bgcolor=yellow>Option1:</td></tr></table>
+Use the same procedure for AM pure beads as after PCR1. In this case, you got the mix of plant DNA and microbiome DNA for root samples.
+<table><tr><td bgcolor=yellow>Option2:</td></tr></table>
+<p style="text-align:justify;">
+After PCR 2, run all PCR2 product (25ul) on 1% Agarose gel for 1 hour at 120V with 1Kb marker, then use gel extractor to get the only microbiome band of each sample and transfer the gel to fresh 1.5 ml tubes. Then follow the protocol from Nucleo spin PCR and gel clean up kit to do the gel purification. Based on this method, the picogreen measurement below will only estimate the microbial concentration of each sample, which probably can provide a more precise guide of how to equimolarly pool all barcoded samples into one sequencing library. However, it is quite time-consuming.
+</p>
+## 4.Picogreen measurement: 
+Measure the concentration of samples by Picogreen.
+https://labbook.au.dk/download/attachments/134359528/picogreen_worksheet.xlsx?version=1&modificationDate=1611074984526&api=v2<div>
+## 5.Pooling of samples:  
+### 
+<p style="text-align:justify;">
+<table><tr><td bgcolor=yellow>If you used AM pure beads for PCR2 purification(! Following steps highly depends on your gel results!)</td></tr></table>
+* If you used AMpure beads for purification, you need to remove the plant band from root samples. 
+* If the plant band and microbial band are equal from gel picture, you can use this set up:
+* For Rhizosphere sample pool them to 10 ng/µL and for root samples pool 20 ng/uL.
+* You can adjust the ration according to your gels pictures (it is better to use the G-box for it)
+* After pooling your samples run it all on run 1% Agarose gel 1 hour at 120V with 1 Kb marker and extract the microbial band. 
+* Clean up is done by Nucleo spin PCR and gel clean up kit.  
+</p>
+<table><tr><td bgcolor=yellow>Pooling of samples: If you used gel purification (option2 above):</td></tr></table>
+* Just based on the results from picogreen to calculate the required amount of each sample to be pooled (e.g. 20ng/sample).
+
+## 6.Concentrate the library:
+<p style="text-align:justify;">
+Pool all your replicates of the library after gel clean up. The aim is to have up to 50 µL of kit purified library. If you have more, since you had to split the gel extraction into more tubes, consider purifying all the samples again, so that you end up with a low volume of all the pooled samples, you can consider using the same procedure for AM pure beads as after PCR1 and PCR2.
+</p>
+## 7.Qubit measurement:
+####   Qubit™ dsDNA HS Assay Kit
+* Prepare 1 mL of working solution: 995 µL of 1xTe buffer + 5µL of  assay dye reagents.  
+Standards(Kit provides already prepared standards):
+* 10µL of  Standard 1 +190 µL of working solution
+* 10µL of  Standard 2 +190 µL of working solution  
+Sample:  
+* After the library was concentrated usually is needed only 1 µL of sample for this measurement:
+* 1 µL of sample +199 µL of working solution
+(If the reading cannot be perform, dilute your sample 1:10.) 
+
+## 8.Sequencing using iseq machine:  
+<table><tr><td bgcolor=yellow>Things keep in mind:</td></tr></table>
+<table><tr><td bgcolor=yellow>Before sequencing, please check the information on the wiki to see how to book the machine and get familiar with the machine: https://labbook.au.dk/display/IS/Welcome+to+the+iSeq100</td></tr></table>
+### 8.1. Thaw the bagged cartridge at room temperature before the day for running sequencing   
+* Usually 9 hours to 12 hours, but not exceeding 18 hours. 
+* Position the cartridge on the rack so that the label faces up and air can circulate on all sides, including the bottom.
+
+###   8.2. Dilute your library to 1 nM:  
+*	For example, if the concentration of your sample is 4ng/ul, according to the equation below, you can transform it to 13.2 nM. 
+* Then dilute your library to 1nM using 10mM Tris-HCL(ph=8.5) and keep the diluted library in a Low-bind mcrotubes(Qubit tubes), which is important since successful sequencing depends on diluting libraries in low-bind microtubes.
+![Caption for the picture.](C:/Users/au611858/Desktop/111.png)  
+  (Where the average library size (for V5-V7 region, it around 460bp)).
+* Vortex briefly, and then centrifuge at 280 × g for 1 minute. 1 nM library at -25°C to -15°C can be stored for up to 1 month.
+
+### 8.3. Dilute 1 nM library to loading concentration(80pM):  
+* Using 10mM Tris-HCL to dilute 1 nM library to loading concentration(80pM). 
+* Then vortex briefly, and then centrifuge at 280 × g for 1 minute.
+* Set aside diluted library on ice for sequencing. 
+* Sequence libraries the same day they are diluted.
+
+### 8.4. Add a PhiX Control:
+PhiX is a small, ready-to-use Illumina library with balanced nucleotide representation and increase base diversity. For V5-V7 amplicon library where the base diversity is relatively low, we attempted to add 50% phix, the sequencing parameter is much better than adding 30% Phix.    
+
+1.In a low-bind microtube, combine the following volumes to prepare 50 μl 1 nM PhiX:   
+* 10 nM PhiX (5 μl)   
+* 10mM Tris-HCL (45 μl)  
+2. Vortex briefly, and then centrifuge at 280 × g for 1 minute.    
+3. 1 nM PhiX at -25°C to -15°C can be stored for up to 1 month.    
+4. In a low-bind microtube, dilute 1 nM PhiX to the same loading concentration as the library (80pM).   
+5. Combine PhiX and library:   
+* For a 30% spike-in, add 30 μl diluted PhiX to 100 μl diluted library.   
+* For a 50% spike-in, add 50 μl diluted PhiX to 100 μl diluted library.    
+Actual PhiX percentage varies depending on library quality and quantity.  
+6. Vortex briefly, and then centrifuge at 280 × g for 1 minute.   
+7. Set aside the library with PhiX spike-in on ice.     
+
+###    8.5. Load Consumables into the Cartridge:
+To see an instructional video on cartridge preparation and loading, select Sequence. The video showed detailed information about the loading the library and the Flow cell. You can also see the instruction form this website: <div> https://emea.support.illumina.com/downloads/iseq-100-system-guide-1000000036024.html<div> (from page 31). 
+
+
