@@ -1,0 +1,118 @@
+---
+title: "Protocol for harvesting plant-associated samples for microbiome study"
+author: "Ke Tao"
+date: "2021/5/31"
+output: 
+  html_document:
+    theme: journal
+    toc: yes
+    toc_float: true
+---
+
+**Note: this harvesting protocol is originally based on the harvesting protocol at EMBO practical course 2017**
+
+
+
+## MATERIALS 
+
+- 3% bleach 
+- 80% ethanol 
+- Autoclaved water 
+- <span style="color: red;">Sterile 25mm filter holders</span>
+- <span style="color: red;">Sterile 25mm 0.2 microm pore size filter membrane</span>
+- 10 or 20 mL sterile syringes
+- Detergent (1x TE + 0.1% Triton X-100)
+- 15mL falcons
+- 50 mL falcons
+- 2mL Eppi tubes with screw-lid (Violet tube with beads from DNA isolation kit)
+- Sterile blades and tweezers
+- Squared petri dish with a 4cm line drawn on it
+
+## PROCEDURE (this is mainly for Arabidopsis from the soil, surface sterilization)
+
+1. Harvest in an Eppi tube a small aliquot of the soil from an unplanted pot or from soil surrounding the plant, being this the **BULK SOIL FRACTION**.
+2. Pool 4 roots together, shake them before keeping them in a 15 mL falcon tube, already filled up with autoclaved water (around 10 mL). These roots should still have some soil particles attached to them. Shake the tube 10x and transfer the roots to another 15 mL falcon with 10 mL autoclaved water. Centrifuge the falcon of the first wash (4,000 x g, 15 min), remove 95% of the supernatant and resuspend the pellet into the remaining liquid using a cut P1000 tip. Transfer 300 µl of suspension to a 2 ml tube with lysis matrix **(RHIZOSPHERE FRACTION)**.
+3. Wash the roots 3 times by inverting 10 times. Change the water every time.
+4. Transfer the roots to a new falcon tube, containing 10 mL of detergent. Shake vigorously for 2 min. Keep the wash and transfer the roots to another tube with detergent, and shake again for 2 min. If desired, this can be done a third time to make sure to remove all the microbes tightly attached to the root. Pour the three detergent washes together in a 50 ml falcon tube and transfer the roots to another 15 ml tube.
+5. <span style="color: red;">(Before using them, the filter holders should be sterilized by putting them in a beaker and first pouring 3% bleach over them, removing it for later use and, then, pouring 80% ethanol. Remove the ethanol back, cover with miracloth and allow to dry. In between experiments, a UV treatment (for approx. 30 min) can also be done.)</span>
+6. <span style="color: red;">Place a filter membrane on the center of a filter holder, trying not to touch it (place it using the blue paper that comes with the membrane). Close the filter holder and attach a 10 ml syringe (without the plunger).</span>
+7. <span style="color: red;">Pour the detergent wash into the syringe and push with the plunger into the membrane (It should be hard). Repeat this until all the detergent wash has gone through the membrane.</span>
+8. <span style="color: red;">Discard the flow through and keep the membrane, containing the **RHIZOPLANE FRACTION**.</span>
+9. Pour 10 mL of 80% ethanol into the tube where the roots were placed and shake for 30 seconds. Discard the ethanol.
+10. Repeat the same procedure, with 3% bleach and shake for 30 seconds.
+11. Wash 3 times with autoclaved water to remove all the bleach. Cut a 3 cm segment 1 cm below the hypocotyl and keep this root part in an Eppi tube as the **ENDOPHYTIC FRACTION**. Store all fractions in -80 freezer.
+
+
+<span style="color: red;"> **The steps for obtianing rhizoplane fraction has been discarded for the microbiome study at PM lab in Aarhus university.** </span>
+
+**The whole process is shown by the following picture**
+
+![Washing process for harvesting roots for microbiome study](C:/Users/Ke Tao/Desktop/microbiome_16S_workflow/image/Fractionation1.jpg)
+
+
+
+## PROCEDURE used at Aarhus ( For Lotus from the soil, surface sterilization)
+
+
+1. Harvest in an Eppi tube a small aliquot of the soil from an unplanted pot(**selected the soil deep in the pot, the same location as the roots**), being this the **BULK SOIL FRACTION**.
+
+2. After taking out plants from pots, try to remove the soil particals from roots as much as possible(remember surface sterile hands and change gloves between samples), take pictures for the whole plants to record the growth phenotype.
+
+3.	Cut off shoots (keep in square plate with wet filter paper for weighing later)
+
+4. Pool roots from one pot together, shake them before keeping them in a 50 mL falcon tube, already filled up with autoclaved water (around 35 mL). These roots should still have some soil particles attached to them. Votex the falcon tube 30 secs and transfer the roots to another 50 mL falcon with 35 mL autoclaved water. Centrifuge the falcon of the first wash (4,700 x g, 15 min), remove 95% of the supernatant and resuspend the pellet into the remaining liquid (**around 5 ml**) using a cut P1000 tip. Transfer 300 µl of suspension to a 2 ml tube with lysis matrix **(RHIZOSPHERE FRACTION)**. Or feeze all the resuspend pellet in liquid nitrogen. 
+
+5. Wash the roots 3 times by vortexing 30 secs. Change the water every time.
+
+6. Transfer the roots to a new 50 ml falcon tube, containing 35 mL of detergent. Shake vigorously for 2 min. Keep the wash and transfer the roots to another tube with detergent, and shake again for 2 min. If desired, this can be done a third time to make sure to remove all the microbes tightly attached to the root. Transfer the roots to another 50 ml tube.
+
+7. Pour 10 mL of 80% ethanol into the tube where the roots were placed and shake for 30 seconds. Discard the ethanol.
+
+8. Repeat the same procedure, with 3% bleach and shake for 30 seconds.
+
+9. Wash 3 times with autoclaved water to remove all the bleach. Cut a 4 cm segment 1 cm below the hypocotyl (or keep the entire roots) and keep this root part in a tube as the **ENDOPHYTIC FRACTION**. Store all fractions in -80 freezer.
+
+
+
+## PROCEDURE used at Aarhus ( For Lotus from the SynCom, no surface sterilization, rhizoplane and endosphere were collected together)
+
+**This precedure can also be conducted for plants from soil without surface sterilization**
+
+1.	After removing plants from pots, take photo of plants to show overall status of the plants (root & shoot visible).
+
+2.	Cut off shoots (keep in square plate with wet filter paper for weighing later)
+
+3.	Combine roots from each pot in 50 mL Falcon tubes containing 35 mL sterile H2O
+	
+	Shake vigorously by hand for 30sec
+  Transfer washed roots to a new 50 mL falcon tube containing 35 mL sterile H2O
+
+4.	Centrifuge the initial Falcon tubes at 4700g for 15min
+  Remove almost all supernatant, resuspend pellet in remaining  ~2-3 mL H2O
+  Transfer 300 uL to tubes (Rhizospere fraction)
+
+5.	Wash the roots 5x with sterile H2O
+ Each time, shake for 30 sec
+ Pour off H2O and re-fill
+
+6.	Separate out washed roots in sterile square plates
+	Cut 4 cm piece of root (excluding the top 1 cm)
+  Remove any nodules and put in tubes (Nodule fraction)
+  Pat dry roots with sterile filter paper and put into tubes (Endosphere fraction)
+
+7.	Weigh shoots individually and record data (I will collate all of this data)
+  Combine shoots from each pot into 15 mL white tubes (used for metabolic analysis)
+  Store in box labelled ‘###’ in the -80C freezer
+
+
+
+
+
+
+
+
+
+
+
+
+
