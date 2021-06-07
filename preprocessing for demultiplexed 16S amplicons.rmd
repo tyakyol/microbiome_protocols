@@ -1,0 +1,288 @@
+---
+title: "Preprocessing for Demultiplexed 16S amplicon Dataset"
+author: "Ke Tao"
+date: "March 19, 2019"
+output: 
+  html_document:
+    theme: journal
+    toc: yes
+    toc_float: true
+---
+
+Outline for preprocessing
+
+
+# From bcl file to fastq file
+
+make sure installed `bcl2fastq`
+
+one sample:
+
+```{}
+qx --no-scratch "nohup bcl2fastq --runfolder-dir /home/ketao/lysm/NGS-C.Rogers-40386B --output-dir /home/ketao/lysm/40386B"
+```
+
+In the upper script, `NGS-C.Rogers-40386B` is the folder contains all the original data generated from Miseq machine, `40386B` is the new folder that I generated for downstream analysis.
+
+# Merge forward and reverse reads
+
+make sure installed qiime1
+
+In this step, make sure the input and output are in the same folder
+
+```{}
+qx --no-scratch -c 6 -t 12:00:00 "multiple_join_paired_ends.py -i ./ -o ./"
+```
+
+**Note: in the upper step, sometimes it returns an error report _Cannot find fastq-join. Is it installed? Is it in your path?_ , then it means Linux package _ea-utils_ is missing, intall package _ea_utils_ to solve the problem**
+
+
+Script for install _en_utils_
+
+```{}
+wget https://github.com/ExpressionAnalysis/ea-utils/zipball/master
+
+unzip master
+
+cd ExpressionAnalysis-ea-utils-*/clipper
+
+make
+
+export PATH=$PATH:/home/ketao/ExpressionAnalysis-ea-utils-bd148d4/clipper
+
+```
+
+
+remove everything in the working folder
+
+```{}
+rm *fastq.gz
+
+rm *.txt
+
+rm *.out
+```
+
+delete unpaired reads
+
+```{}
+find . -name "*.un1.fastq" -type f
+ 
+find . -name "*.un1.fastq" -type f -delete
+
+find . -name "*.un2.fastq" -type f
+
+find . -name "*.un2.fastq" -type f -delete
+```
+
+# Quality filtering
+
+### Extract barcode information
+
+```{}
+qx --no-scratch -c 6 -t 12:00:00 "multiple_extract_barcodes.py -i ./ -p /home/ketao/16s_lysm/40386A/pf_extract_barcode.txt -o ./ --include_input_dir_path --remove_filepath_in_name"
+```
+
+in this script, the file `pf_extract_barcode.txt` contains the parameters that I set for extract the barcodes, which is:
+
+```{}
+extract_barcodes:input_type barcode_in_label
+extract_barcodes:char_delineator '1:N:0:'
+extract_barcodes:bc1_len 12
+```
+
+At the same time, prepare the mapping file.
+
+see more detail of the format for mapping file: <http://qiime.org/documentation/file_formats.html>
+
+distribute mapping file to every subfolder
+
+```{}
+find *_L001_R1_001 -type d -exec cp mapping.txt {} \;
+```
+
+
+### Quality filtering
+
+```{}
+qx --no-scratch -c 6 "multiple_split_libraries_fastq.py -i ./ -o ./ --demultiplexing_method mapping_barcode_files --read_indicator fastqjoin.join.fastq --barcode_indicator barcodes.fastq --mapping_indicator mapping.txt -p /home/ketao/16s_lysm/40386A/pf_split_libraries_fastq.txt"
+```
+
+`pf_split_libraries_fastq.txt` is the parameter file, and the parameters are as following:
+
+```{}
+split_libraries_fastq:rev_comp_mapping_barcodes True
+split_libraries_fastq:max_barcode_errors 2
+split_libraries_fastq:phred_quality_threshold 30
+```
+
+**At this step, some dataset returned from company don't contain barcode sequence, So the _--demultiplexing_method_ should set to be _sampleid_by_file_ **
+
+```{}
+split_libraries_fastq.py  -i /home/ketao/16s_lysm/lysm2019/dataset3/73_S73_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/74_S74_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/75_S75_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/76_S76_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/77_S77_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/78_S78_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/79_S79_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/80_S80_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/81_S81_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/82_S82_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/83_S83_L001_R1_001/fastqjoin.join.fastq,/home/ketao/16s_lysm/lysm2019/dataset3/84_S84_L001_R1_001/fastqjoin.join.fastq --sample_ids nfre2.rh.1.1,nfre2.rh.1.2,nfre2.rh.1.3,nfre2.r.1.1,nfre2.r.1.2,nfre2.r.1.3,nfre2.rh.2.1,nfre2.rh.2.2,nfre2.rh.2.3,nfre2.r.2.1,nfre2.r.2.2,nfre2.r.2.3 -o /home/ketao/16s_lysm/lysm2019/dataset3 -q 30 --barcode_type 'not-barcoded'
+```
+
+The aboving script can be put into a _bash_ file and run at the background
+
+
+# Compatible between Qiime1 and VSEARCH or USEARCH
+
+copy shell script `relabel_ids.sh` into the current working folder
+
+```{}
+bash relabel_ids.sh seqs.fna seqs.fasta
+```
+
+**if there are dataset need to be combined together, this point is best to comebine**
+
+```{}
+cat *.fasta > seqs_all.fasta
+```
+
+delete potential blank lines in file _seqs_all.fasta_
+
+```{}
+sed -i '/^ *$/d' seqs12.fasta
+
+```
+
+
+
+# Dereplication
+
+make sure installed `vsearch`
+
+```{}
+qx --no-scratch -c 6 -t 24:00:00 "/home/ketao/bin/vsearch -derep_fulllength ./seqs12.fasta -output /home/ketao/lysm/40386A/seqs12_unique.fasta -sizeout"
+```
+
+The numbers of reads before dereplication and after dereplication can be checked:
+
+```{}
+grep -c ">" seqs12.fasta
+
+grep -c ">" seqs12_unique.fasta
+
+```
+
+# Sort the dereplicated reads by abundance and discard singletons
+
+```{}
+qx --no-scratch -c 6 "/home/ketao/bin/vsearch --sortbysize seqs12_unique.fasta --output /home/ketao/lysm/40386AB/seqs12_unique_sorted.fasta --minsize 2"
+```
+
+# OTU clustering(unoise method)
+
+```{}
+qx --no-scratch -c 6 "/home/ketao/16s_ln_ns/usearch -unoise3 seqs12_unique_sorted.fasta -zotus zotus.fasta"
+```
+
+Mapping all the reads back onto the relatively small set of OTU representative sequences
+
+```{}
+qx --no-scratch -c 6 "/home/ketao/bin/vsearch -usearch_global /home/ketao/lysm/40386AB/seqs12.fasta -db /home/ketao/lysm/40386AB/zotus.fasta -strand plus -id 0.97 -otutabout zotu_table_raw.txt"
+
+```
+
+
+Obtain OTU table!
+
+# Taxonomy assignment
+
+Here, I use _greengene_ as database, _RDP_ as classifier method
+
+**NOTE, remember check the website and update this database on time**
+
+the database is downloaded from website:
+<http://greengenes.secondgenome.com/?prefix=downloads/greengenes_database/gg_13_5/>
+
+```{}
+qx --no-scratch -c 6 "assign_taxonomy.py -i ./zotus.fasta -t /home/ketao/16s_lysm/lysm2019/taxonomy/gg_13_5_otus/taxonomy/97_otu_taxonomy.txt -r /home/ketao/16s_lysm/lysm2019/taxonomy/gg_13_5_otus/rep_set/97_otus.fasta -m rdp -o /home/ketao/16s_lysm/lysm2019/taxonomy"
+```
+
+Here, two files are generated: _zotus_tax_assignments.txt_, _zotus_tax_assignments.log_
+
+Note: the taxonomy assignment can also conducted by `usearch` and the script used is：
+```{}
+/home/ketao/16s_ln_ns/usearch -sintax zotus_unoise3.fasta -db /home/ketao/16s_ln_ns/ref_Aalborg/ESVs_w_sintax_1.0.fa -tabbedout /home/ketao/16s_ln_ns/taxonomy/zotus_ESV_db.sintax -strand plus -sintax_cutoff 0.8
+```
+
+
+
+# Add taxnomy information to OTU_table
+
+**From this step, transform the OTU_table to _biom_ file**
+
+makesure _qiime1_ is activated
+
+```{}
+biom convert -i zotu_table_raw.txt -o zotu_table_raw.biom --table-type="OTU table" --to-json
+```
+
+Add taxnomy information to the last column of OTU table
+
+```{}
+biom add-metadata -i zotu_table_raw.biom --observation-metadata-fp /home/ketao/16s_lysm/lysm2019/taxonomy/zotus_tax_assignments.txt -o zotu_table_raw_ggrdp.biom --sc-separated taxonomy --observation-header OTUID,taxonomy 
+```
+
+# OTU table filtering
+
+Summarize OTU table
+
+```{}
+biom summarize-table -i zotu_table_ggrdp.biom
+```
+
+**According to the summarized result, the low reads samples need to be filtered， this is optional**
+
+For example, if filter the samples that have reads lower than 3000
+```{}
+filter_samples_from_otu_table.py -i otu_table_tax.biom -o otu_table2.biom -n 3000
+```
+
+Filter OTUs that have abundance lower than 0.01%
+
+```{}
+filter_otus_from_otu_table.py --min_count_fraction 0.0001 -i zotu_table_raw_ggrdp.biom -o zotu_table_ggrdp_0.01.biom
+```
+
+
+In this step, taxonomy can also be filtered, while it can be done later in R
+
+Convert the OTU table from _biom_ to _txt_ format
+```{}
+biom convert -i Zotu_table_ggrdp_0.01.biom -o Zotu_table_ggrdp_0.01.txt --table-type="OTU table" --to-tsv
+```
+
+
+
+
+# Alpha diversity
+
+Because the purpose for this dataset is to compare genotype effect on microbiome structure, so **bray-curtis** distance is better fit. **weighted unifrac** and **unweighted unifrac** they are better fit for big difference niche. **weighted unifrac** considers the taxonomy abundance.
+
+rarefaction for alpha diversity
+
+Rarefaction by minimum reads counts/sample
+
+Here the raw otu table should be used for the analysis, as the 0.01% OTU_table doesn't contian otus that has low abundances, which could cause similar alpha diversity.
+
+```{}
+qx --no-scratch -c 6 "single_rarefaction.py -i ./zotu_table_raw.biom -o ./zotu_table_rare2968.biom -d 2968"
+
+```
+
+Alpha diversity
+
+```{}
+qx --no-scratch -c 6 "alpha_diversity.py -i zotu_table_rare2968.biom -o ./alpha.txt -m shannon,chao1,observed_otus"
+```
+
+Beta diversity can be done in R
+
+Modify format for R 
+```{}
+sed -i '/# Const/d;s/#OTU //g;s/ID.//g' lysm_otu_table_ggrdp2.txt
+```
+
+done!
