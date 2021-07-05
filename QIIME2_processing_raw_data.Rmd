@@ -1,0 +1,228 @@
+---
+title: "QIIME2_processing_raw_data"
+author: "Simon Kelly"
+date: "06/07/2021"
+output: html_document
+---
+
+#Before starting#
+
+Create metadata and manifest .txt files that are specific to the dataset you are using. Examples of these files can be found in “O:\Nat_MBG-PMg\Simon\QIIME2 how to”
+
+The example script files mentioned can be found in “O:\Nat_MBG-PMg\Simon\QIIME2 how to\scripts”
+
+
+#Importing raw read files (imp_demux_pe.sh)#
+
+Imports raw read files based on the manifest.txt file you created. The output .qzv file can be check the sequencing quality and to see what trimming parameters are required for the dada2 process.
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path rlk_manifest.txt \
+  --output-path rlk_paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2 \
+
+qiime demux summarize \
+  --i-data ./rlk_paired-end-demux.qza \
+  --o-visualization ./rlk_paired-end-demux.qzv
+
+#Denoising (dada2.sh) Note can use deblur here as an alternative
+
+Performs dada2 denoising of your reads and merges the forward and reverse reads.
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs ./rlk_paired-end-demux.qza \
+  --p-trim-left-f 10 \
+  --p-trunc-len-f 280 \
+  --p-trim-left-r 15 \
+  --p-trunc-len-r 215 \
+  --p-max-ee 2 \
+  --p-n-threads 0 \
+  --o-table ./rlk_dada2_table.qza \
+  --o-representative-sequences ./rlk_dada2_repseqs.qza \
+  --o-denoising-stats ./rlk_dada2_stats.qza
+
+#dada2_vis#
+
+Transforms dada2 .qza output files into .qzv format can then be opened in Qiime2-view. The output from this needs to be checked carefully to assess the success of the denoising. If too many reads are not passing through the various filtering steps, the parameters in the dada2.sh script need to be modified.
+
+qiime metadata tabulate \
+--m-input-file ./rlk_dada2_stats.qza \
+--o-visualization  ./rlk_dada2_stats.qzv \
+
+qiime feature-table summarize \
+  --i-table ./rlk_dada2_table.qza \
+  --m-sample-metadata-file ./rlk_metadata.txt \
+  --o-visualization ./rlk_dada2_table.qzv \
+
+qiime feature-table tabulate-seqs \
+--i-data ./rlk_dada2_repseqs.qza \
+--o-visualization ./rlk_dada2_repseqs.qzv
+
+#Phylogenetic tree (tree.sh)#
+
+Constructs a phylogenetic tree of your sequences.
+
+qiime fragment-insertion sepp \
+  --i-representative-sequences ./rlk_dada2_repseqs.qza \
+  --o-tree ./rlk_tree.qza \
+  --o-placements ./rlk_tree_placements.qza \
+  --p-threads 30
+
+#Rarefaction (alpha_rfctn.sh)
+
+Makes rarefaction curves across a range of sequence depths so you can identify a suitable sampling depth to use for diversity analysis.
+
+qiime diversity alpha-rarefaction \
+  --i-table ./rlk_dada2_table.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --o-visualization ./rlk_alpha_rarefaction_curves.qzv \
+  --p-min-depth 1000 \
+  --p-max-depth 100000
+
+#Alpha & beta diversity (div_metrics.sh)#
+
+Calculates several different alpha and beta diversity metrics. I usually do this on the unfiltered data to get an idea of how the data is looking overall. At a later stage, once comparments/species etc have been subsetted, it would make sense to run this analysis again on the filtered data. E.g endosphere only etc.
+
+qiime diversity core-metrics-phylogenetic \
+  --i-table ./rlk_dada2_table.qza \
+  --i-phylogeny ./rlk_tree.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --p-sampling-depth 27000 \
+  --output-dir ./rlk_core-metrics-results
+
+#alpha_div_sig# 
+
+Test for significance in alpha div metrics. Can be used for any of the alpha diversity metrics (Shannon, Faith, eveness) just direct to the appropriate .qza file
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity ./core-metrics-results/shannon_vector.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --o-visualization ./core-metrics-results/shannon_statistics.qzv
+
+#beta_div_sig# (PERMANOVA test beta diversity significance based on genotype)
+
+Test for significance in beta div metrics.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix ./rlk_core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --m-metadata-column Genotype \
+  --p-pairwise \
+  --o-visualization ./rlk_core-metrics-results/unweighted-unifrac-Genotype-significance.qzv \
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix ./rlk_core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --m-metadata-column Genotype \
+  --p-pairwise \
+  --o-visualization ./rlk_core-metrics-results/weighted-unifrac-Genotype-significance.qzv
+
+#beta_div_permdip# 
+
+Another check of genotype significance taking into account within group distances.
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix ./rlk_core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --m-metadata-column Genotype \
+  --p-method permdisp \
+  --o-visualization ./rlk_core-metrics-results/unweighted-unifrac-Genotype-permdisp.qzv \
+ 
+qiime diversity beta-group-significance \
+  --i-distance-matrix ./rlk_core-metrics-results/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --m-metadata-column Genotype \
+  --p-method permdisp \
+  --o-visualization ./rlk_core-metrics-results/weighted-unifrac-Genotype-permdisp.qzv
+
+
+
+#Training classifier reference database#
+
+It has been shown that training a classifier reference database with the particular primers used in your experiment results in improved taxonomic assignment. This only needs to be performed once for each primer set. I have done this for v5-v7 primers and v4 primers for the silva database.
+ 
+•	Downloaded appropriate reference database files from silva genes
+
+#16S_import.sh#
+Import silva database files as qiime2 artifacts
+qiime tools import \ 
+--type 'FeatureData[Sequence]' \ 
+--input-path 99/silva_132_99_16S.fna\ 
+--output-path 99_otus.qza 
+
+qiime tools import \ 
+--type 'FeatureData[Taxonomy]' \ 
+--input-format HeaderlessTSVTaxonomyFormat \ 
+--input-path 99/taxonomy_7_levels.txt \ 
+--output-path 99_taxonomy.qza  
+
+#16S_extract.sh#
+Extract V5-V7 region from silva dataset 
+qiime feature-classifier extract-reads \
+  --i-sequences 99_otus.qza \
+  --p-f-primer AACMGGATTAGATACCCKG \
+  --p-r-primer ACGTCATCCCCACCTTCC \
+  --p-min-length 300 \
+  --p-max-length 500 \
+  --o-reads ref-seqs-v57.qza
+  
+#16s_classify.sh#
+Train classifier
+
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads ref-seqs-v57.qza \
+  --i-reference-taxonomy 99-taxonomy.qza \
+  --o-classifier silva132_v57_classifier.qza
+
+#Taxonomic assignment (classify.sh)# 
+
+Assign taxonomy using trained reference taxonomy file
+
+qiime feature-classifier classify-sklearn \
+--i-reads ./rlk_dada2_repseqs.qza \
+--i-classifier ./silva132_v57_classifier.qza \
+--o-classification ./rlk_taxonomy.qza
+
+#Error with trailing white spaces when try to run the following#
+qiime metadata tabulate \
+--m-input-file ./rlk_taxonomy.qza \
+--o-visualization ./rlk_taxonomy.qzv
+
+So, needed to follow these instructions to get taxonomy.qzv file (ran as separate scripts)
+https://forum.qiime2.org/t/qiime-taxa-filter-table-error/3947
+
+
+#Filtering data#
+
+Qiime2 has many options for filtering your ASV table, sequences and taxonomy files. This is useful for removing low abundant ASVs, plant contamination etc. There are many options available and I recommend reading the filtering qiime2 document to get an overview of these.
+
+#filt_asv.sh#
+For filtering ASV features, e.g. to remove low abundant features
+
+qiime feature-table filter-features \
+  --i-table ./rlk_dada2_table.qza \
+  --p-min-frequency 10 \   #(min 10 reads/asv)#
+  --p-min-samples 4 \   #(present in min 4x samples)#
+  --o-filtered-table ./rlk_table_filt_10.qza
+
+#filt_sample.sh#
+For filtering samples, e.g. to subset rhizosphere or endosphere compartments
+
+qiime feature-table filter-samples \
+  --i-table rlk_table_filt.qza \
+  --m-metadata-file rlk_metadata.txt \
+  --p-where "[Compartment]='RZ'" \
+  --o-filtered-table RZ_rlk_table.qza
+
+#Barplot (barplot.sh)#
+
+Creates taxonomic barplot of selected table
+
+qiime taxa barplot \
+  --i-table ./rlk_table_filt_10.qza \
+  --i-taxonomy ./rlk_taxonomy.qza \
+  --m-metadata-file ./rlk_metadata.txt \
+  --o-visualization ./rlk_taxa_barplot.qzv
+
+
