@@ -1,0 +1,65 @@
+---
+title: "Root_exudates_Lotus_basic_method"
+author: "Simon Kelly"
+date: "06/07/2021"
+output: html_document
+---
+
+# Introduction #
+
+This method has been used routinely to collect Lotus root exudates that have the demonstrated capacity to induces NF production by M. loti R7A.
+
+Note, details of an alternative setup method are provided that is much faster in practice but does carry a higher risk of fungal contamination from the seeds.
+
+
+# Seedling prep #
+
+Sterilise and germinate Lotus seeds on filter paper as per usual (You will need ~50x good seedlings/magenta).
+
+
+# Magenta prep #
+
+Add fine mesh to the bottom, folded so that the mesh sits ~1-2cm from the bottom.
+Add 50 mL dH2O (water level should be just below the mesh)
+AUTOCLAVE
+
+# Seedling transfer #
+
+Aseptically transfer ~50 seedlings/magenta.
+Avoid any seeds showing signs of fungal growth.
+Carefully poke the roots through the mesh.
+
+# Alternative setup method #
+
+Another option that can also work well and save time is to directly germinate the seeds on the mesh.
+
+Sterilise seeds as per usual
+spread the seeds onto the mesh inside the magenta
+cover with 2x wet filter paper and put into growth room
+After ~3 days, once seeds have germinated remove the filter paper
+
+Note, this method has a higher chance of fungal contamination.
+
+
+# Plant growth #
+
+Place the magentas in the 21C plant room
+Take care when moving them to not wash all your seedlings off the mesh!
+Leave to grow for 21 days
+
+# Root exudate harvest #
+
+Discard any magentas showing 'cloudy' water or other signs of contamination
+
+Remove the mesh along with the seedlings, gently shake to recover last drops from the roots.
+Suck up the magenta water in a 30 mL syringe. 
+Attach a .45 uM filter and collect filtered sample in a new 50 mL Falcon tube.
+Repeat if water remainng in magenta.
+
+Freeze in -80C
+
+# Lyophilise sample for storage #
+
+Frozen samples can be lyophilised for stable long-term storage
+Request use of the lyophiliser in Michael Etzerodt's group.
+Talk to Shaun / Anna for instructions on use.
