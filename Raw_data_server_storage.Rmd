@@ -1,0 +1,17 @@
+---
+title: "Raw_data_server_storage"
+author: "Simon Kelly"
+date: "06/07/2021"
+output: html_document
+---
+
+# Raw data storage #
+
+All raw data MUST be stored on common server the O:\Nat_MBG-PMg\~Microbiome raw data\
+
+
+1x folder per sequencing library using the naming convention:
+Initials_date_experiment(short)
+
+
+Along with the raw reads, manifest/metadata files must also be provided.
