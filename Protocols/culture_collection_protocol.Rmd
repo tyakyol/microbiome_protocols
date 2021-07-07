@@ -1,0 +1,105 @@
+---
+title: "Culture_collection_protocol"
+author: "Simon Kelly"
+date: "07/07/2021"
+output: html_document
+---
+
+
+# Introdcution #
+This protocol outlines the process of recovering SynCom isolates from plant roots.
+Note that seveal steps need to be optimised for the particular plant/environment being investigated.
+
+In particular, the diltutions to obtain growth in ~30% of wells in 96-well plates will vary significantly between plants / environments
+
+
+
+###########################################################
+                                                         
+#  Section A – material harvest and bacterial isolation   #
+                                                         
+###########################################################
+
+Materials:
+Scalpel and forceps
+Sterile H2O
+Sterile 50 ml tubes
+1l PBS buffer (130 mM NaCl [7,6 g/l], 7 mM Na2HPO4,2 H2O[1,246 g/l], 3 mM NaH2PO4,1 H2O [0,414 g/l], pH7,0)
+4x 500 ml 10% TYB bacterial medium (Sigma T8907)
+2x4 sterile 500 ml conical flasks
+Sterile blue pestles
+Sterile TissueLyzer beads (70% ethanol – 37C until evaporated)
+72x  96-well plates with lids for glycerol stocks (Sarstedt/Frisenette), (54 roots + 18 nods)
+Sterile pipetting trays
+Sterile filter paper for step 12
+
+1.	Take out block of soil with roots from the 1 pot. Wash them with Millipore water until soil is gone – sterile or fresh.
+2.	Vortex all roots 30 sec in 15 ml PBS + 0,02% triton in a 50 ml tube to remove residual soil particles.
+3.	Transfer roots to new 15 ml PBS + 0,02% triton in a 50 ml tube. Keep first wash for step 10.
+4.	Vortex roots 30 sec.
+5.	Transfer roots to new 15 ml PBS + 0,02% triton in a 50 ml tube. Discard solution
+6.	Vortex roots 30 sec.
+7.	Transfer roots to new 15 ml sterile water in a 50 ml tube. Discard solution
+8.	Vortex roots 30 sec.
+9.	Repeat step 7 and 8 two more times (three times in total)
+10.	Spin down tubes containing first wash water for 10 min at 1500g. Pour of supernatant. Mix remaining PBS with pellet by pipetting carefully. Remove root fragments. Transfer pellet with PBS to lysing matrices. Freeze in liquid nitrogen and store at -80C.
+11.	Remove all visible nodules and primordia by cutting above and below without disturbing the nodule/primordium. Keep them in the coldroom. Remember step 12.
+12.	Two root systems from each pot will be used for 16S rRNA community profiling. Dry them on filter paper, transfer to 15 ml tubes, freeze in liquid nitrogen and store in -80C.
+13.	Transfer each remaining root system into sterile 1,5 ml screw cap tubes with TissueLyzer beads and 1 ml 10% TYB medium. Homogenize on TissueLyzer, max speed for 30 sec.
+14.	Work in LAF bench from this point
+15.	Pool all homogenates into a total volume of 10-15 ml 10% TYB in 50 ml tube, vortex and wait 15 min for plant material to sediment.
+16.	Prepare 3x 50 ml tubes each with 27 ml 10% TYB medium. Transfer 3 ml of bacterial solution (step 9) to first one and make dilution series from 1:10 to 1:1k. Transfer 30 ml of lowest dilution to flask with 270 ml 10% TYB medium to get 1:10k dilution. See
+17.	In three 500 ml conical flasks, combine 150 ml bacterial solution with 150 ml 10% TYB, 75 ml bacterial solution with 225 ml 10%TYB and 50 ml bacterial solution with 250 ml 10%TYB to obtain 1:20k, 1:40k and 1:60k dilution respectively.
+18.	Distribute 300 ml of each dilution into 18 (or more, if you want to handle really big numbers) 96-well plates (160 ul per well), starting from the lowest. Numbers from 1 and up. (54 plates/roots/pot + 18 plates/nodules/pot)
+19.	Seal each plate with PCR sealing foil to prevent medium evaporation. Incubate at RT for 14 days without shaking.
+20.	Plates with 30% or less growth are to be used.
+21.	Samples obtained in step 10 and 12 will be used for 16S rRNA community profiling (section D1/D2)
+22.	Nodules and primordia should be crushed with a sterile blue pestle in a 1,5 ml tube containing 10% TYB. Make dilution series as above. Only distribute 1/60k in plates.
+23.	Plate 50 l on 10% TYB plates – 1 plate for each dilution.
+  
+
+##########################################################################
+
+#  Section B – Bacterial DNA extraction and glycerol stock preparation   #
+
+##########################################################################
+
+For 72 plates (54 roots + 18 nods)
+
+Buffer 1 (86,4 ml needed in total)
+Buffer 2 (86,4 ml needed in total)
+2x 500 ml 60% glycerol (864 ml needed in total)
+90x  96-well plates for DNA extraction, PCR plates
+Multichannel pipette
+Sterile pipetting trays
+
+Buffer1 (pH 12):
+Sterile
+		For 400 ml
+NaOH 25 mM	100 ml of 100 mM NaOH
+EDTA(Na) 0,2 mM	0,8 ml of 100 mM EDTA(Na)
+H2O	299,2 ml
+
+Stocks:
+Sterile
+100 mM NaOH (1,6g/400 ml stock)
+100 mM EDTA (14,89g/400 ml stock)
+
+
+Buffer 2 (pH 7,46):
+Sterile
+Tris-HCl 40 mM	1,936g/400 ml 
+
+
+For DNA extraction:
+1.	Add 10 ul buffer1 to each 96er well (Filter tips)
+2.	Add 6 ul bacterial culture (Normal tips), vortex and spin down
+3.	Incubate at 95⁰C for 30 min (seal plate well) 
+4.	Add 10 ul buffer2 (Normal tips). After mixing with equal volumes of buffers 1 and 2, pH is around 8,56, which is similar to normal PCR buffer (pH 8,8)
+5.	Keep at -20⁰C
+		
+For storage of bacteria:
+1.	Add 100 ul sterilized 60% glycerol to each well with remaining bacterial culture, pipet to mix
+2.	Seal plates
+3.	Store at -80⁰C
+
