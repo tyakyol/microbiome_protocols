@@ -1,0 +1,61 @@
+---
+title: "Pre-germination of spores with Gr24"
+author: "Zuzana Blahovska"
+date: "12/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Mainly used for:
+- 1) a quick look to see if spores work or 
+- 2) adding AM spores to open pots (Microbiome)
+
+## Preparation of GR24:##
+
+Dilute the stock powder in DMSO to 0.01 M – keep frozen at -20 degree
+
+Final concentration used to pre-germinate AM spores: 10-7M
+
+Stored: Microbiome freezer pm1
+
+## SLA-media ##
+
+Stocks are added into sterile water.
+
+Macroelements	| Concentration
+------------- | -------------
+MgSO4 * 7H2O | 0.75 mM
+NaNO3 |	1 mM
+K2SO4	| 1 mM
+CaCl2* 2H2O |	2 mM
+Na2HPO4 |	3.2 µM
+
+Microelements | Concentration
+------------- | -------------
+FeNa-EDTA |	25 µM
+Mn SO4*1H2O |	5 µM
+Cu SO4* 5 H2O	| 0.25 µM
+Zn SO4* 7 H2O |	0.5 µM
+H3BO3	| 25 µM
+Na2MoO4 *2H2O |	0.1 µM
+
+
+### PLEASE NOTE: If you are using France spores from Agro-nutrition- Toulouse (liquid form) you need to wash the spores from the solution that they come from as it prevents them to germinate. ###
+
+Let the spores settle and remove as much liquid as possible, then add media mix them around and let them settle again. Repeat this 1-2 times.
+
+For Czech spores from Symbiom (powder form) the above washing step is not necessary.
+
+
+# Protocol: #
+
+Add Gr24 into SLA media in which you will resuspend the desired number of spores. 
+Then the spores are incubated in 28-30 degree for 72 hours. Mix occasionally during the 72 hours incubation. 
+
+After 72 hours let the spores settle and remove as much liquid as possible then add media mix them around and let them settle again. Repeat this 3-4 times. Spores are ready to be used, you can see under microscope if they are germinated at this point.
+
+
